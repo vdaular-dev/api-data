@@ -55,5 +55,6 @@ if [ "$COMMIT_AND_PUSH" = 'true' ]; then
         echo "The generated data doesn't bring any updates"
         exit 2
     fi
+    git commit -m "$COMMIT_MESSAGE"
     git push -fu origin "$BRANCH_NAME"
 fi
