@@ -51,7 +51,7 @@ if [ "$COMMIT_AND_PUSH" = 'true' ]; then
     git add data
     git config user.name "$COMMIT_NAME"
     git config user.email "$COMMIT_EMAIL"
-    if ! git commit -m "$COMMIT_MESSAGE"; then
+    if [ -z "$(git status --porcelain | grep -v 'data/api/v2/meta/index.json')" ]; then
         echo "The generated data doesn't bring any updates"
         exit 2
     fi
